@@ -1,0 +1,19 @@
+.colors__container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+
+  li {
+    list-style: none;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+  }
+}
+
+.refresh-btn {
+  padding: 20px;
+  background-color: beige;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
