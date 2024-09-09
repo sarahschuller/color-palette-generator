@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
           .toString(16)
           .padStart(6, "0");
       colorListArray.push(randomColor);
-      console.log(randomColor);
     }
     renderColorList(colorListArray);
   }
