@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const colorList = document.getElementById("color-list");
   const searchInput = document.getElementById("search-input");
   const refreshBtn = document.getElementById("refresh-btn");
+
+  // Converts a hex color to an rgb color
   const hexToRgb = (hex) => {
     let alpha = false,
       h = hex.slice(hex.startsWith("#") ? 1 : 0);
@@ -20,6 +22,27 @@ document.addEventListener("DOMContentLoaded", function () {
       (alpha ? `, ${h & 0x000000ff}` : "") +
       ")"
     );
+  };
+
+  // Converts an rgb color to an hsl color
+  const rgbToHsl = (r, g, b) => {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const l = Math.max(r, g, b);
+    const s = l - Math.min(r, g, b);
+    const h = s
+      ? l === r
+        ? (g - b) / s
+        : l === g
+        ? 2 + (b - r) / s
+        : 4 + (r - g) / s
+      : 0;
+    return [
+      60 * h < 0 ? 60 * h + 360 : 60 * h,
+      100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0),
+      (100 * (2 * l - s)) / 2,
+    ];
   };
 
   generateColorList();
@@ -61,10 +84,25 @@ document.addEventListener("DOMContentLoaded", function () {
         copyToClipboard(color);
       });
 
-      // Renders a span below the color hex that displays the color's rgb value
+      // Renders a span below the colorHex that displays the color's rgb value
       const colorRgb = document.createElement("span");
       colorWrapper.appendChild(colorRgb);
       colorRgb.innerHTML = hexToRgb(color);
+
+      // Renders a span below the colorRgb that displays the color's hsl value
+      const colorHsl = document.createElement("span");
+      colorWrapper.appendChild(colorHsl);
+      const rgb = hexToRgb(color).match(/\d+/g);
+      const hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
+      // Round the hsl integer value to the nearest hundredth
+      for (let i = 0; i < hsl.length; i++) {
+        hsl[i] = Math.round(hsl[i] * 100) / 100;
+      }
+
+      colorHsl.innerHTML = `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`;
+
+      console.log(rgb[0]);
+      console.log(hsl);
     });
   }
 
