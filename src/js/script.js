@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   const colorList = document.getElementById("color-list");
-  const searchInput = document.getElementById("search-input");
   const refreshBtn = document.getElementById("refresh-btn");
 
   // Converts a hex color to an rgb color
