@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Renders a span below the color preview that displays the color's hex value
       const colorHex = document.createElement("span");
+      colorHex.classList.add("hex-color");
       colorWrapper.appendChild(colorHex);
       colorHex.innerHTML = color;
       colorHex.addEventListener("click", () => {
@@ -86,11 +87,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Renders a span below the colorHex that displays the color's rgb value
       const colorRgb = document.createElement("span");
+      colorRgb.classList.add("rgb-color");
       colorWrapper.appendChild(colorRgb);
       colorRgb.innerHTML = hexToRgb(color);
 
       // Renders a span below the colorRgb that displays the color's hsl value
       const colorHsl = document.createElement("span");
+      colorHsl.classList.add("hsl-color");
       colorWrapper.appendChild(colorHsl);
       const rgb = hexToRgb(color).match(/\d+/g);
       const hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
