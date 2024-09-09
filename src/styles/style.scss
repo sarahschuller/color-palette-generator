@@ -22,13 +22,21 @@ body {
 h1 {
   font-family: "Nerko One", cursive;
   font-size: 4rem;
-  margin-bottom: 1rem;
+  margin-block: 1rem;
+  margin-inline: 10px;
+  border-bottom: 6px solid #000;
+  line-height: 3rem;
+  text-align: center;
 }
 
 h3 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 1.5rem;
   margin-bottom: 1rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 }
 
 .colors__container {
@@ -40,6 +48,10 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  @media screen and (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   li {
     display: flex;
     flex-direction: column;
@@ -49,6 +61,7 @@ h3 {
     align-items: center;
     background-color: #f5f5f5;
     border-radius: 4px;
+    max-width: 250px;
   }
 }
 
@@ -57,6 +70,11 @@ h3 {
   height: 175px;
   border-radius: 4px;
   margin: 10px;
+
+  @media screen and (max-width: 768px) {
+    width: 125px;
+    height: 125px;
+  }
 }
 
 .hex-color,
@@ -71,6 +89,11 @@ h3 {
   &:hover {
     background-color: rgba(255, 255, 0, 0.3);
     transition: 300ms;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    margin-inline: 5px;
   }
 }
 
