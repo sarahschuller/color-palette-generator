@@ -1,7 +1,19 @@
+.content__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .colors__container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .colors__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 .colors__container li {
   display: flex;
@@ -13,8 +25,8 @@
 }
 
 .color-preview {
-  width: 100px;
-  height: 100px;
+  width: 175px;
+  height: 175px;
   border-radius: 4px;
 }
 
