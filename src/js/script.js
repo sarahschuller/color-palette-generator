@@ -90,6 +90,9 @@ document.addEventListener("DOMContentLoaded", function () {
       colorRgb.classList.add("rgb-color");
       colorWrapper.appendChild(colorRgb);
       colorRgb.innerHTML = hexToRgb(color);
+      colorRgb.addEventListener("click", () => {
+        copyToClipboard(hexToRgb(color));
+      });
 
       // Renders a span below the colorRgb that displays the color's hsl value
       const colorHsl = document.createElement("span");
@@ -97,15 +100,14 @@ document.addEventListener("DOMContentLoaded", function () {
       colorWrapper.appendChild(colorHsl);
       const rgb = hexToRgb(color).match(/\d+/g);
       const hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
-      // Round the hsl integer value to the nearest hundredth
+      // Round the hsl integer value to the nearest whole number
       for (let i = 0; i < hsl.length; i++) {
-        hsl[i] = Math.round(hsl[i] * 100) / 100;
+        hsl[i] = Math.round(hsl[i]);
       }
-
       colorHsl.innerHTML = `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`;
-
-      console.log(rgb[0]);
-      console.log(hsl);
+      colorHsl.addEventListener("click", () => {
+        copyToClipboard(`hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`);
+      });
     });
   }
 
