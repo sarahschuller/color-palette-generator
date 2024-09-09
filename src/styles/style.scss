@@ -4,11 +4,16 @@
   gap: 1rem;
 
   li {
-    list-style: none;
-    padding: 20px;
-    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
   }
+}
+
+.color-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
 }
 
 .refresh-btn {

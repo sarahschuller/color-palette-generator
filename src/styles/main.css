@@ -1,27 +1,18 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.content__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .colors__container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
+  gap: 1rem;
 }
 .colors__container li {
-  list-style: none;
-  padding: 20px;
-  margin-block: 20px;
-  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+}
+
+.color-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
 }
 
 .refresh-btn {
